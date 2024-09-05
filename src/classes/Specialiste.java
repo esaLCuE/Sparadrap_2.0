@@ -1,25 +1,37 @@
 package classes;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.InputMismatchException;
+import java.util.List;
+
 public class Specialiste extends InfosCommunes {
 
-    private String regexSpecialite = "^[a-zA-Zà-üÀ-Ü\\s-]*$";
+    private String regexDomaine = "^[a-zA-Zà-üÀ-Ü\\s-]*$";
 
-    private String specialite;
+    private String domaine;
 
-    public void setSpecialite(String specialite) throws IllegalArgumentException {
-        if (!specialite.matches(regexSpecialite)) {
-            throw new IllegalArgumentException("Saisie invalide");
+    public void setDomaine(String domaine) throws InputMismatchException {
+        if (!domaine.matches(regexDomaine)) {
+            throw new InputMismatchException("Saisie invalide");
         }
-        this.specialite = specialite;
+        this.domaine = domaine;
     }
 
-    public String getSpecialite() {
-        return specialite;
+    public String getDomaine() {
+        return domaine;
     }
+
+    // POUR LES DOMAINES TOUT FAIRE DEPUIS LA COMBOBOX
+
+    public static List<String> domaines = new ArrayList<>(Arrays.asList("Urologie", "Cardiologie", "Gynécologie",
+            "Pédiatrie", "Neurologie"));
+
+    public static List<Specialiste> specialistes = new ArrayList<>();
 
     public Specialiste(String nom, String prenom, String adresse, String codePostal, String ville, String telephone,
-                       String email, String specialite) {
+                       String email, String domaine) throws NullPointerException, IllegalArgumentException, InputMismatchException {
         super(nom, prenom, adresse, codePostal, ville, telephone, email);
-        setSpecialite(specialite);
+        setDomaine(domaine);
     }
 }

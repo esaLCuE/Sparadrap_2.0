@@ -4,6 +4,7 @@ package classes;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
 
@@ -16,12 +17,12 @@ public class Client extends InfosCommunes {
     private MedecinTraitant medecinTraitant;
     private List<Specialiste> specialistes;
 
-    public void setSecuSociale(String secuSociale) throws IllegalArgumentException, InputMismatchException {
+    public void setSecuSociale(String secuSociale) throws NullPointerException, InputMismatchException {
         if (secuSociale == null || secuSociale.isEmpty() || secuSociale.matches("^\\s$")) {
-            throw new InputMismatchException("Merci de saisir un numéro de sécurité sociale");
+            throw new NullPointerException("Merci de saisir un numéro de sécurité sociale");
         }
         if (!secuSociale.matches(regexSecu)){
-            throw new IllegalArgumentException("Merci de saisir un numéro de sécurité sociale valide");
+            throw new InputMismatchException("Merci de saisir un numéro de sécurité sociale valide");
         }
         this.secuSociale = secuSociale;
     }
@@ -30,6 +31,7 @@ public class Client extends InfosCommunes {
         return this.secuSociale;
     }
 
+    // SAISIE DATES POSSIBLE AVEC COMBOBOX
     public void setDateNaissance(LocalDate dateNaissance) /*throws IllegalArgumentException, InputMismatchException*/ {
         DateTimeFormatter formatPattern = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         this.dateNaissance = LocalDate.parse(dateNaissance.format(formatPattern));
@@ -39,9 +41,10 @@ public class Client extends InfosCommunes {
         return this.dateNaissance;
     }
 
+    // SAISIE DANS UNE COMBOBOX
     public void setMutuelle(Mutuelle mutuelle) throws NullPointerException {
         if (mutuelle == null ){
-            throw new NullPointerException("Merci de saisir une mutuelle valide");
+            throw new NullPointerException("Merci de saisir une mutuelle");
         }
         this.mutuelle = mutuelle;
     }
@@ -73,6 +76,10 @@ public class Client extends InfosCommunes {
     public List<Specialiste> getSpecialistes() {
         return this.specialistes;
     }
+
+
+
+    public static List<Client> clients = new ArrayList<>();
 
     public Client(String nom, String prenom, String adresse, String codePostal, String ville, String telephone,
                   String email, String secuSociale, LocalDate dateNaissance, Mutuelle mutuelle,

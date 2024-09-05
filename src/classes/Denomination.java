@@ -1,45 +1,55 @@
 package classes;
 
+import java.util.InputMismatchException;
+
 public class Denomination {
 
     private String nom;
+    private String ndf;
     private String prenom;
 
-    public void setNom(String nom) throws NullPointerException, IllegalArgumentException {
-        if (nom == null || nom.isEmpty() || nom.matches("\\s+")) {
+
+    public void setNdf(String ndf) throws NullPointerException, InputMismatchException {
+        if (ndf == null || ndf.isEmpty() || ndf.matches("\\s+")) {
             throw new NullPointerException("Merci de saisir un nom");
         }
-        if (!nom.matches("^[a-zA-Zà-üÀ-Ü\\s-]*$")) {
-            throw new IllegalArgumentException("Merci de saisir un nom valide.");
+        if (!ndf.matches("^[a-zA-Zà-üÀ-Ü\\s-]*$")) {
+            throw new InputMismatchException("Merci de saisir un nom valide.");
         }
-        this.nom = nom;
+        this.ndf = ndf;
+    }
+    public String getNdf() {
+        return this.ndf;
     }
 
-    public String getNom() {
-        return this.nom;
-    }
-
-    public void setPrenom(String prenom) throws NullPointerException, IllegalArgumentException {
+    public void setPrenom(String prenom) throws NullPointerException, InputMismatchException {
         if (prenom == null || prenom.isEmpty() || prenom.matches("\\s+")) {
             throw new NullPointerException("Merci de saisir un prénom");
         }
         if (!prenom.matches("^[a-zA-Zà-üÀ-Ü\\s-]*$")){
-            throw new IllegalArgumentException("Merci de saisir un prénom valide.");
+            throw new InputMismatchException("Merci de saisir un prénom valide.");
         }
         this.prenom = prenom;
     }
-
     public String getPrenom() {
         return this.prenom;
     }
 
-    public Denomination(String nom, String prenom) throws NullPointerException, IllegalArgumentException {
-        setNom(nom);
-        setPrenom(prenom);
+    public void setNom(String ndf, String prenom) throws NullPointerException, IllegalArgumentException, InputMismatchException {
+        this.nom = this.prenom+" "+this.ndf;
+    }
+    public String getNom() {
+        return this.nom;
     }
 
-    public Denomination(String nom) throws NullPointerException, IllegalArgumentException {
-        setNom(nom);
+    public Denomination(String ndf, String prenom) throws NullPointerException, IllegalArgumentException, InputMismatchException {
+        setNdf(ndf);
+        setPrenom(prenom);
+        setNom(ndf, prenom);
+    }
+
+    public Denomination(String ndf) throws NullPointerException, IllegalArgumentException, InputMismatchException {
+        setNdf(ndf);
     }
 
 }
