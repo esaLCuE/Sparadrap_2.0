@@ -3,15 +3,12 @@ package classes;
 import java.util.InputMismatchException;
 
 public class InfosCommunes extends Denomination {
-    // NOM PRENOM ADRESSE CODE POSTAL VILLE TELEPHONE EMAIL
-    // CLIENT MEDECIN SPECIALISTE MUTUELLE
-    // FAIRE AUTRE CLASSE POUR NOM SEUL POUR MEDICAMENT ET MUTUELLE
 
-    private String regexAdresse = "^([0-9]*?\\s?)+[a-zA-Zà-üÀ-Ü\\s-]*$";
-    private String regexCodePostal = "^[0-9]{2}( ?)[0-9]{3}$";
-    private String regexVille = "^[a-zA-Zà-üÀ-Ü\\s-]*$";
-    private String regexTel = "^[0-9\\s-]{10}$";
-    private String regexEmail = ("^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$");
+    private final String regexAdresse = "^([0-9]*?\\s?)+[a-zA-Zà-üÀ-Ü\\s-']*$";
+    private final String regexCodePostal = "^[0-9]{2}( ?)[0-9]{3}$";
+    private final String regexVille = "^[a-zA-Zà-üÀ-Ü\\s-]*$";
+    private final String regexTel = "^[0-9\\s-]{10}$";
+    private final String regexEmail = ("^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$");
 
     private String adresse;
     private String codePostal;

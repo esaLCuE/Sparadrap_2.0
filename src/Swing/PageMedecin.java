@@ -61,11 +61,12 @@ public class PageMedecin extends JFrame {
             infosMedecin.setText("<html>" + text.replaceAll("\n", "<br/>") + "</html>");
         }
 
-
+        int idMod=0;
         for (int i=0; i<clients.size(); i++) {
             if (clients.get(i).getMedecinTraitant().equals(medecins.get(id))) {
-                modelClient.add(i, clients.get(i).getNom());
+                modelClient.add(idMod, clients.get(i).getNom());
             }
+            idMod++;
         }
 
         for (int i=0; i<ordonnances.size(); i++) {

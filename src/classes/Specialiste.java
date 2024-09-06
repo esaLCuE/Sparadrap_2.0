@@ -13,7 +13,7 @@ public class Specialiste extends InfosCommunes {
 
     public void setDomaine(String domaine) throws InputMismatchException {
         if (!domaine.matches(regexDomaine)) {
-            throw new InputMismatchException("Saisie invalide");
+            throw new InputMismatchException("Domaine invalide");
         }
         this.domaine = domaine;
     }

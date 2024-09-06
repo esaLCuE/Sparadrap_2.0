@@ -41,6 +41,12 @@ public class Denomination {
     public String getNom() {
         return this.nom;
     }
+    public void setNomSoc(String nom){
+        this.nom=nom;
+    }
+    public String getNomSoc(){
+        return this.nom;
+    }
 
     public Denomination(String ndf, String prenom) throws NullPointerException, IllegalArgumentException, InputMismatchException {
         setNdf(ndf);
@@ -48,8 +54,8 @@ public class Denomination {
         setNom(ndf, prenom);
     }
 
-    public Denomination(String ndf) throws NullPointerException, IllegalArgumentException, InputMismatchException {
-        setNdf(ndf);
+    public Denomination(String nom) throws NullPointerException, IllegalArgumentException, InputMismatchException {
+        setNomSoc(nom);
     }
 
 }

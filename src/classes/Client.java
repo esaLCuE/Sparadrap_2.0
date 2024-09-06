@@ -15,7 +15,7 @@ public class Client extends InfosCommunes {
     private LocalDate dateNaissance;
     private Mutuelle mutuelle;
     private MedecinTraitant medecinTraitant;
-    private List<Specialiste> specialistes;
+    private List<Specialiste> specialistesClient;
 
     public void setSecuSociale(String secuSociale) throws NullPointerException, InputMismatchException {
         if (secuSociale == null || secuSociale.isEmpty() || secuSociale.matches("^\\s$")) {
@@ -33,7 +33,7 @@ public class Client extends InfosCommunes {
 
     // SAISIE DATES POSSIBLE AVEC COMBOBOX
     public void setDateNaissance(LocalDate dateNaissance) /*throws IllegalArgumentException, InputMismatchException*/ {
-        DateTimeFormatter formatPattern = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        DateTimeFormatter formatPattern = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         this.dateNaissance = LocalDate.parse(dateNaissance.format(formatPattern));
     }
 
@@ -64,32 +64,32 @@ public class Client extends InfosCommunes {
         return this.medecinTraitant;
     }
 
-    public void setSpecialistes(List<Specialiste> specialistes) throws NullPointerException {
-        for (int i = 0; i < specialistes.size(); i++) {
-            if (specialistes.get(i) == null) {
+    public void setSpecialistesClient(List<Specialiste> specialistesClient) throws NullPointerException {
+        for (int i = 0; i < specialistesClient.size(); i++) {
+            if (specialistesClient.get(i) == null) {
                 throw new NullPointerException("Merci de saisir un spécialiste valide");
             }
         }
-        this.specialistes = specialistes;
+        this.specialistesClient = specialistesClient;
     }
 
-    public List<Specialiste> getSpecialistes() {
-        return this.specialistes;
+    public List<Specialiste> getSpecialistesClient() {
+        return this.specialistesClient;
     }
 
 
 
     public static List<Client> clients = new ArrayList<>();
 
-    public Client(String nom, String prenom, String adresse, String codePostal, String ville, String telephone,
+    public Client(String ndf, String prenom, String adresse, String codePostal, String ville, String telephone,
                   String email, String secuSociale, LocalDate dateNaissance, Mutuelle mutuelle,
-                  MedecinTraitant medecinTraitant, List<Specialiste> specialistes)
+                  MedecinTraitant medecinTraitant, List<Specialiste> specialistesClient)
                     throws IllegalArgumentException, InputMismatchException, NullPointerException {
-        super(nom, prenom, adresse, codePostal, ville, telephone, email);
+        super(ndf, prenom, adresse, codePostal, ville, telephone, email);
         setSecuSociale(secuSociale);
         setDateNaissance(dateNaissance);
         setMutuelle(mutuelle);
         setMedecinTraitant(medecinTraitant);
-        setSpecialistes(specialistes);
+        setSpecialistesClient(specialistesClient);
     }
 }

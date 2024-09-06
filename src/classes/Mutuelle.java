@@ -26,14 +26,8 @@ public class Mutuelle extends InfosCommunes {
         return this.priseEnCharge;
     }
 
-    static Mutuelle HM = new Mutuelle("Harmonie Mutuelle", "143 rue Blomet", "75015", "Paris",
-            "0980980880","convhms@harmonie-mutuelles.fr", 5);
-    static Mutuelle MAAF = new Mutuelle("MAAF", "Rue de la Treille", "79180", "Chauray", "0969328328",
-            "facteur.maaf_sante@maaf.fr", 5);
-    static Mutuelle JSP = new Mutuelle("JSP", "10 Rue de l'Avenue", "71370", "Ipender",
-            "0713705420", "emailpro@mutuelle.fr", 5);
 
-    public static ArrayList<Mutuelle> mutuelles = new ArrayList<>(Arrays.asList(HM, MAAF, JSP));
+    public static ArrayList<Mutuelle> mutuelles = new ArrayList<>(Arrays.asList());
 
     public Mutuelle(String nom, String adresse, String codePostal, String ville, String telephone, String email,
                     float priseEnCharge) throws IllegalArgumentException, InputMismatchException, NullPointerException {
