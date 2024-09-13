@@ -66,7 +66,7 @@ public class InfosCommunes extends Denomination {
         this.telephone = telephone;
     }
     public String getTelephone(){
-        return this.telephone;
+        return this.telephone.replaceAll("(.{2})","$0 ").trim();
     }
 
     public void setEmail(String email) throws NullPointerException, InputMismatchException {

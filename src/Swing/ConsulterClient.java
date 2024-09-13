@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import static classes.Client.clients;
+import static classes.FonctionsCommunes.*;
 
 public class ConsulterClient extends JFrame {
     private JComboBox clientsBox;
@@ -17,19 +18,27 @@ public class ConsulterClient extends JFrame {
     private JPanel contentPane;
 
     public ConsulterClient(){
+        JFrame frameCli = this;
+
         this.setTitle("Choix du client");
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setContentPane(contentPane);
         this.pack();
 
-        JFrame frameCli = new JFrame();
         setLocationRelativeTo(null);
         setResizable(false);
 
-        Accueil.ajoutHistorique(this);
+        setVisible(true);
+
+        ajoutHistorique(this);
 
         for (int i =0; i<clients.size();i++){
             clientsBox.addItem(clients.get(i).getNom()+" - "+clients.get(i).getSecuSociale());
+        }
+
+        if (clients.isEmpty()){
+            suppClientButton.setEnabled(false);
+            voirClientButton.setEnabled(false);
         }
 
         ajoutClientButton.addActionListener(new ActionListener() {
@@ -39,6 +48,10 @@ public class ConsulterClient extends JFrame {
 
                 CreerClient creerCli = new CreerClient();
                 creerCli.setVisible(true);
+                if (!clients.isEmpty()) {
+                    suppClientButton.setEnabled(true);
+                    voirClientButton.setEnabled(true);
+                }
             }
         });
 
@@ -61,27 +74,52 @@ public class ConsulterClient extends JFrame {
             }
         });
 
+        suppClientButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (!clients.isEmpty()) {
+                    int input = JOptionPane.showConfirmDialog(null, "Supprimer " + clientsBox.getSelectedItem() + " ?",
+                            "Suppression", JOptionPane.YES_NO_OPTION);
+                    if (input == JOptionPane.YES_OPTION) {
+                        int id = clientsBox.getSelectedIndex();
+                        clients.remove(id);
+                        majClients();
+                    }
+                } if (clients.isEmpty()) {
+                    suppClientButton.setEnabled(false);
+                    voirClientButton.setEnabled(false);
+                }
+            }
+        });
+
         precedentButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
-                Accueil.precedent();
+                precedent();
 
             }
         });
 
         this.addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent e) {
-                Accueil.precedent();
+                precedent();
             }
         });
 
         quitterButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Accueil.quitterProgramme();
+                quitterProgramme();
             }
         });
 
+    }
+
+    public void majClients(){
+        clientsBox.removeAllItems();
+        for (int i =0; i<clients.size();i++){
+            clientsBox.addItem(clients.get(i).getNom()+" - "+clients.get(i).getSecuSociale());
+        }
     }
 }

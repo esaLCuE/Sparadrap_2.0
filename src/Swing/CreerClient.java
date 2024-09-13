@@ -6,11 +6,14 @@ import classes.Specialiste;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import static classes.Client.clients;
+import static classes.FonctionsCommunes.*;
 import static classes.MedecinTraitant.medecinsTraitants;
 import static classes.Mutuelle.mutuelles;
 import static classes.Specialiste.specialistes;
@@ -36,9 +39,9 @@ public class CreerClient extends JFrame{
     private JComboBox specBox;
     private JButton ajouterSpecialisteButton;
 
-    private int jour;
-    private int mois;
-    private int annee;
+    private int jour=1;
+    private int mois=1;
+    private int annee=2024;
 
     DefaultListModel<String> modelSpec = new DefaultListModel<>();
     private JList<String> listeSpecClient = new JList<>(modelSpec);
@@ -57,12 +60,10 @@ public class CreerClient extends JFrame{
         setLocationRelativeTo(null);
         setResizable(false);
 
-        Accueil.ajoutHistorique(this);
-
         List <Integer> indexSpec = new ArrayList<>();
         specialistesCli = new ArrayList<>();
 
-        for (int i =0; i<clients.size();i++){
+        for (int i =0; i<specialistes.size();i++){
             specBox.addItem(specialistes.get(i).getNom()+" - "+specialistes.get(i).getDomaine());
         }
 
@@ -76,12 +77,12 @@ public class CreerClient extends JFrame{
             anneeBox.addItem(i);
         }
 
-        for (int i =0; i< mutuelles.size() ;i++){
-            mutuelleBox.addItem(mutuelles.get(i).getNom());
+        for (classes.Mutuelle mutuelle : mutuelles) {
+            mutuelleBox.addItem(mutuelle.getNom());
         }
 
-        for (int i =0; i< medecinsTraitants.size();i++){
-            medTraitBox.addItem(medecinsTraitants.get(i).getNom());
+        for (classes.MedecinTraitant medecinsTraitant : medecinsTraitants) {
+            medTraitBox.addItem(medecinsTraitant.getNom());
         }
 
         anneeBox.addActionListener(new ActionListener() {
@@ -134,7 +135,7 @@ public class CreerClient extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
-                Accueil.precedent();
+                precedent();
 
             }
         });
@@ -142,26 +143,34 @@ public class CreerClient extends JFrame{
         quitterButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Accueil.quitterProgramme();
+                quitterProgramme();
             }
         });
 
         this.addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent e) {
-                Accueil.precedent();
+                precedent();
             }
         });
     }
 
     private void enregistrerClient() {
-        // Fait à l'arrache, mettre les bonnes exceptions
-        try{
+        try {
             Client cli = new Client(ndfField.getText(), prenomField.getText(), adresseField.getText(), cpField.getText(),
-                    villeField.getText(), telephoneField.getText(),emailField.getText(), secuSocField.getText(),
-                    LocalDate.of(annee,mois,jour), // PROBLEME AVEC LE FORMATTAGE DE LA DATE
-                    mutuelles.get(mutuelleBox.getSelectedIndex()), medecinsTraitants.get(medTraitBox.getSelectedIndex()), specialistesCli);
+                    villeField.getText(), telephoneField.getText(), emailField.getText(), secuSocField.getText(),
+                    LocalDate.of(annee, mois, jour), mutuelles.get(mutuelleBox.getSelectedIndex()),
+                    medecinsTraitants.get(medTraitBox.getSelectedIndex()), specialistesCli);
+
+            clients.add(cli);
+
+            setVisible(false);
+            suppHistorique();
+
+            ConsulterClient cli2 = new ConsulterClient();
+        } catch (DateTimeException dte){
+            afficherErreur("Date invalide");
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            afficherErreur(e.getMessage());
         }
     }
 }

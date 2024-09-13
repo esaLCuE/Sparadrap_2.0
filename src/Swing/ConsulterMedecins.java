@@ -9,6 +9,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
+import static classes.FonctionsCommunes.*;
+
 public class ConsulterMedecins extends JFrame {
 
     private JComboBox<String> medecinsBox;
@@ -31,7 +33,7 @@ public class ConsulterMedecins extends JFrame {
         setLocationRelativeTo(null);
         setResizable(false);
 
-        Accueil.ajoutHistorique(this);
+        ajoutHistorique(this);
 
         for (MedecinTraitant medecin : medecins) {
             medecinsBox.addItem(medecin.getNom()+" - "+medecin.getAgrement());
@@ -64,7 +66,7 @@ public class ConsulterMedecins extends JFrame {
                     }
                 }
                 setVisible(false);
-                PageMedecin pageMed = new PageMedecin(medecins, specialistes, pos, i);
+                PageMedecin pageMed = new PageMedecin(pos, i);
                 pageMed.setVisible(true);
 
 
@@ -76,21 +78,21 @@ public class ConsulterMedecins extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
-                Accueil.precedent();
+                precedent();
 
             }
         });
 
         this.addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent e) {
-                Accueil.precedent();
+                precedent();
             }
         });
 
         quitterButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Accueil.quitterProgramme();
+                quitterProgramme();
             }
         });
 

@@ -2,17 +2,20 @@ package classes;
 
 // AJOUTER SECURITE SOCIALE, DATE DE NAISSANCE, MUTUELLE, MEDECIN TRAITANT ET SPECIALISTE(S)
 
+import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
+import java.util.Locale;
 
 public class Client extends InfosCommunes {
     private String regexSecu = "^[12][0-9]{2}(0[1-9]|1[0-2])(2[AB]|[0-9]{2})[0-9]{3}[0-9]{3}([0-9]{2})$";
 
     private String secuSociale;
     private LocalDate dateNaissance;
+    private String dateNaissanceForm;
     private Mutuelle mutuelle;
     private MedecinTraitant medecinTraitant;
     private List<Specialiste> specialistesClient;
@@ -32,13 +35,18 @@ public class Client extends InfosCommunes {
     }
 
     // SAISIE DATES POSSIBLE AVEC COMBOBOX
-    public void setDateNaissance(LocalDate dateNaissance) /*throws IllegalArgumentException, InputMismatchException*/ {
+    public void setDateNaissance(LocalDate dateNaissance) throws IllegalArgumentException, InputMismatchException, DateTimeException {
+        this.dateNaissance = dateNaissance;
         DateTimeFormatter formatPattern = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-        this.dateNaissance = LocalDate.parse(dateNaissance.format(formatPattern));
+        this.dateNaissanceForm = dateNaissance.format(formatPattern);
     }
 
-    public LocalDate getDateNaissance() {
+    public LocalDate getDateNaissanceOri(){
         return this.dateNaissance;
+    }
+
+    public String getDateNaissance() {
+        return this.dateNaissanceForm;
     }
 
     // SAISIE DANS UNE COMBOBOX
@@ -49,8 +57,8 @@ public class Client extends InfosCommunes {
         this.mutuelle = mutuelle;
     }
 
-    public Mutuelle getMutuelle() {
-        return this.mutuelle;
+    public String getMutuelle() {
+        return this.mutuelle.getNom();
     }
 
     public void setMedecinTraitant(MedecinTraitant medecinTraitant) throws NullPointerException {
@@ -59,7 +67,6 @@ public class Client extends InfosCommunes {
         }
         this.medecinTraitant = medecinTraitant;
     }
-
     public MedecinTraitant getMedecinTraitant() {
         return this.medecinTraitant;
     }
@@ -72,12 +79,9 @@ public class Client extends InfosCommunes {
         }
         this.specialistesClient = specialistesClient;
     }
-
     public List<Specialiste> getSpecialistesClient() {
         return this.specialistesClient;
     }
-
-
 
     public static List<Client> clients = new ArrayList<>();
 

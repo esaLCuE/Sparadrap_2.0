@@ -12,6 +12,7 @@ public class Medicament extends Denomination {
     private String categorie;
     private float prix;
     private LocalDate miseEnService;
+    private String miseEnServiceForm;
     private int quantite;
 
     public void setCategorie(String categorie) throws NullPointerException {
@@ -36,8 +37,11 @@ public class Medicament extends Denomination {
     }
 
     public void setMiseEnService(LocalDate miseEnService) throws IllegalArgumentException, InputMismatchException {
-        DateTimeFormatter formatPattern = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        this.miseEnService = LocalDate.parse(miseEnService.format(formatPattern));
+        this.miseEnService = miseEnService;
+        DateTimeFormatter formatPattern = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        this.miseEnServiceForm = miseEnService.format(formatPattern);
+        //DateTimeFormatter formatPattern = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        //this.miseEnService = LocalDate.parse(miseEnService.format(formatPattern));
     }
 
     public LocalDate getMiseEnService() {
@@ -53,17 +57,16 @@ public class Medicament extends Denomination {
     }
 
 
-    public static List<String> categories = new ArrayList<>(Arrays.asList("Analgésique", "Antibiotique", "Antiviraux"));
+    public static List<String> categories = new ArrayList<>(Arrays.asList("Analgésique", "Antibiotique", "Antiviral"));
 
     public static List<Medicament> medicaments = new ArrayList<Medicament>();
 
-    public Medicament(String nom, String categorie, int prix, LocalDate miseEnService, int quantite)
+    public Medicament(String nom, String categorie, int prix, LocalDate miseEnService)
             throws NullPointerException, IllegalArgumentException, InputMismatchException {
         super(nom);
         setCategorie(categorie);
         setPrix(prix);
         setMiseEnService(miseEnService);
-        setQuantite(quantite);
     }
 
 }

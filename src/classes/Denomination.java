@@ -36,7 +36,7 @@ public class Denomination {
     }
 
     public void setNom(String ndf, String prenom) throws NullPointerException, IllegalArgumentException, InputMismatchException {
-        this.nom = this.prenom+" "+this.ndf;
+        this.nom = prenom+" "+ndf;
     }
     public String getNom() {
         return this.nom;
@@ -49,8 +49,8 @@ public class Denomination {
     }
 
     public Denomination(String ndf, String prenom) throws NullPointerException, IllegalArgumentException, InputMismatchException {
-        setNdf(ndf);
         setPrenom(prenom);
+        setNdf(ndf);
         setNom(ndf, prenom);
     }
 

@@ -1,13 +1,12 @@
 package Swing;
 
-import classes.MedecinTraitant;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import static classes.FonctionsCommunes.*;
 import static classes.MedecinTraitant.medecinsTraitants;
 import static classes.Specialiste.specialistes;
 
@@ -20,7 +19,7 @@ public class Accueil extends JFrame {
     private JButton precedentButton;
     private JPanel contentPane;
 
-    private static List<JFrame> frames = new ArrayList<>();
+    public static List<JFrame> frames = new ArrayList<>();
 
     public Accueil(){
 
@@ -61,6 +60,30 @@ public class Accueil extends JFrame {
             }
         });
 
+        achatButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setVisible(false);
+                int input = JOptionPane.showConfirmDialog(null, "Y a-t-il une ordonnance pour cet achat ?", "Jsp", JOptionPane.YES_NO_CANCEL_OPTION);
+                if (input == JOptionPane.YES_OPTION) {
+                    AchatAvecOrdo achat = new AchatAvecOrdo();
+                } else if (input == JOptionPane.NO_OPTION) {
+                    AchatSansOrdo achat = new AchatSansOrdo();
+                } else {
+                    setVisible(true);
+                }
+            }
+        });
+
+        historiqueAchatsButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setVisible(false);
+                SelectionDateAchat selDatAch = new SelectionDateAchat();
+                selDatAch.setVisible(true);
+            }
+        });
+
         precedentButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -90,20 +113,11 @@ public class Accueil extends JFrame {
         ConsulterMedecins consMed = new ConsulterMedecins(medecinsTraitants, specialistes);
         consMed.setVisible(true);
     }
-
-
-    public static void quitterProgramme(){
-        System.exit(0);
+    public List<JFrame> getFrame() {
+        return frames;
     }
 
-    public static void precedent(){
-        if (frames.size()>1) {
-            frames.get(frames.size() - 2).setVisible(true);
-            frames.removeLast();
-        }
-    }
-
-    public static void ajoutHistorique(JFrame frame){
-        frames.add(frames.size(), frame);
-    }
 }
+// TODO : METTRE LES CONTROLES (TRY) SUR LES SPECIALISTES ET SUR LE RESTE, PUIS LA PRIORITE 2
+// TODO : JE SAIS PAS JE CROIS QUE JE PEUX PASSER A LA PRIORITE 2 MAIS IL Y A SUREMENT ENCORE DES CHOSES A AMELIORER AAAAAAAAAAAAAAAAAAAAAAAAAH
+// TODO : LES ORDONNANCES DES MEDECINS NE S'AFFICHENT PAAAAAAAAAAAAAAAAAAAAAAAAAS

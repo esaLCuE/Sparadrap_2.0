@@ -19,7 +19,7 @@ public class Specialiste extends InfosCommunes {
     }
 
     public String getDomaine() {
-        return domaine;
+        return this.domaine;
     }
 
     // POUR LES DOMAINES TOUT FAIRE DEPUIS LA COMBOBOX
