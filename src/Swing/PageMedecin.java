@@ -1,9 +1,5 @@
 package Swing;
 
-import classes.Client;
-import classes.MedecinTraitant;
-import classes.Specialiste;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -31,6 +27,8 @@ public class PageMedecin extends JFrame {
     DefaultListModel modelOrdonnance = new DefaultListModel();
     private JList ordonnancesList;
     private JButton consulterPatientButton;
+    private JButton supprimerMedecinButton;
+    private JButton modifierMedecinButton;
 
 
     public PageMedecin(String pos, int id) {
@@ -94,6 +92,7 @@ public class PageMedecin extends JFrame {
         }
 
         List<Integer> idOrdo = new ArrayList<>();
+
         for (int i = 0; i < getAchats().size(); i++) {
             if (Objects.equals(pos, "med")) {
                 if (getAchats().get(i).getMedecinTraitant()!=null && getAchats().get(i).getMedecinTraitant().equals(medecinsTraitants.get(id))){
@@ -127,6 +126,54 @@ public class PageMedecin extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
                 PageAchat ach = new PageAchat((idOrdo.get(ordonnancesList.getSelectedIndex())));
+            }
+        });
+
+        modifierMedecinButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setVisible(false);
+                if (Objects.equals(pos, "med")) {
+                    ModifMedecinTraitant modTra = new ModifMedecinTraitant(id);
+                } else {
+                    ModifMedecinSpecialiste modSpe = new ModifMedecinSpecialiste(id);
+                }
+            }
+        });
+
+        supprimerMedecinButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) throws IllegalArgumentException {
+                try {
+                    int input = JOptionPane.showConfirmDialog(null, "Supprimer le médecin ?", "Suppression médecin", JOptionPane.YES_NO_OPTION);
+                    if (input == JOptionPane.YES_OPTION) {
+                        if (pos == "med") {
+                            for (int i = 0; i < clients.size(); i++) {
+                                if (clients.get(i).getMedecinTraitant().equals(medecinsTraitants.get(id))) {
+                                    throw new IllegalArgumentException("Vous ne pouvez pas supprimer de médecin traitant ayant encore des patients.");
+                                }
+                            }
+                            medecinsTraitants.remove(medecinsTraitants.get(id));
+                            setVisible(false);
+                            suppHistorique();
+                            suppHistorique();
+                            ConsulterMedecins consMed = new ConsulterMedecins();
+                            consMed.setVisible(true);
+                        } else {
+                            for (int i = 0; i < clients.size(); i++) {
+                                clients.get(i).getSpecialistesClient().remove(specialistes.get(id));
+                            }
+                            specialistes.remove(specialistes.get(id));
+                            setVisible(false);
+                            suppHistorique();
+                            suppHistorique();
+                            ConsulterMedecins consMed = new ConsulterMedecins();
+                            consMed.setVisible(true);
+                        }
+                    }
+                } catch (IllegalArgumentException ex) {
+                    afficherErreur(ex.getMessage());
+                }
             }
         });
 

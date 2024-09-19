@@ -107,6 +107,7 @@ public class Achat {
     public Achat(Client client, Specialiste specialiste, List<Medicament> medicaments, List<Integer> quantites,
                  LocalDate dateAchat, boolean ordo) {
         setClientAchat(client);
+        setMedecinTraitant(client.getMedecinTraitant());
         setSpecialisteAchat(specialiste);
         setListeMedicaments(medicaments);
         setListeQuantites(quantites);

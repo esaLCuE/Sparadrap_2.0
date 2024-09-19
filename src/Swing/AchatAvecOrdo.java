@@ -1,6 +1,7 @@
 package Swing;
 
 import classes.Achat;
+import classes.Client;
 import classes.Medicament;
 import classes.Specialiste;
 
@@ -42,6 +43,7 @@ public class AchatAvecOrdo extends JFrame {
     private JList medicamentsList;
 
     boolean ordo =true;
+    List<Client> clientsPossibles = new ArrayList<>();
 
     public AchatAvecOrdo() {
 
@@ -74,8 +76,11 @@ public class AchatAvecOrdo extends JFrame {
         moisBox.setSelectedIndex(0);
         anneeBox.setSelectedIndex(0);
 
-        for(int i=0;i<clients.size();i++){
-            clientOrdoBox.addItem(clients.get(i).getNom()+" - "+clients.get(i).getSecuSociale());
+        for(int i=0;i<clients.size();i++) {
+            if (clients.get(i).getMedecinTraitant() != null) {
+                clientOrdoBox.addItem(clients.get(i).getNom() + " - " + clients.get(i).getSecuSociale());
+                clientsPossibles.add(clients.get(i));
+            }
         }
         clientOrdoBox.setSelectedIndex(0);
 
@@ -172,7 +177,7 @@ public class AchatAvecOrdo extends JFrame {
     }
 
     private void enregistrerAchat(){
-        Achat ach = new Achat(clients.get(clientOrdoBox.getSelectedIndex()),
+        Achat ach = new Achat(clientsPossibles.get(clientOrdoBox.getSelectedIndex()),
                     specOrdo, tsMedics, ttesQtt,
                     LocalDate.of(Integer.parseInt(anneeBox.getSelectedItem().toString()),
                             Integer.parseInt(moisBox.getSelectedItem().toString()),

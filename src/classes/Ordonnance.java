@@ -12,7 +12,7 @@ public class Ordonnance {
 
     private LocalDate emission;
     private String nomMedecinOrdo;
-    private String nomClientOrdo;
+    private Client nomClientOrdo;
     private List<Medicament> listMeds;
     private List<Integer> listQtt;
     private String nomSpec;
@@ -34,10 +34,10 @@ public class Ordonnance {
     }
 
     //SELECTION AVEC COMBOBOX
-    public void setNomClientOrdo(Client clientOrdo) throws InputMismatchException, IllegalArgumentException, NullPointerException {
-        this.nomClientOrdo = clientOrdo.getNom();
+    public void setClientOrdo(Client clientOrdo) throws InputMismatchException, IllegalArgumentException, NullPointerException {
+        this.nomClientOrdo = clientOrdo;
     }
-    public String getNomClientOrdo() {
+    public Client getNomClientOrdo() {
         return this.nomClientOrdo;
     }
 
@@ -68,7 +68,7 @@ public class Ordonnance {
             throws InputMismatchException, IllegalArgumentException, NullPointerException, DateTimeException {
         setEmission(emission);
         setNomMedecin(medecin);
-        setNomClientOrdo(client);
+        setClientOrdo(client);
         setMedicaments(listMeds, listQtt);
         setNomSpec(spec);
 
@@ -76,7 +76,7 @@ public class Ordonnance {
     public Ordonnance(LocalDate emission, Client client, List<Medicament> listMeds, List<Integer> listQtt)
             throws InputMismatchException, IllegalArgumentException, NullPointerException, DateTimeException {
         setEmission(emission);
-        setNomClientOrdo(client);
+        setClientOrdo(client);
         setMedicaments(listMeds, listQtt);
 
     }

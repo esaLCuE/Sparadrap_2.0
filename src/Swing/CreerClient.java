@@ -60,6 +60,8 @@ public class CreerClient extends JFrame{
         setLocationRelativeTo(null);
         setResizable(false);
 
+        ajoutHistorique(this);
+
         List <Integer> indexSpec = new ArrayList<>();
         specialistesCli = new ArrayList<>();
 

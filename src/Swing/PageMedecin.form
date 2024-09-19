@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="Swing.PageMedecin">
-  <grid id="27dc6" binding="contentPane" layout-manager="GridLayoutManager" row-count="9" column-count="6" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+  <grid id="27dc6" binding="contentPane" layout-manager="GridLayoutManager" row-count="11" column-count="6" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="20" width="500" height="282"/>
+      <xy x="20" y="20" width="532" height="332"/>
     </constraints>
     <properties/>
     <border type="none"/>
@@ -18,7 +18,7 @@
       </component>
       <component id="fadcf" class="javax.swing.JButton" binding="precedentButton">
         <constraints>
-          <grid row="7" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="9" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value="Retour"/>
@@ -26,7 +26,7 @@
       </component>
       <component id="80714" class="javax.swing.JButton" binding="quitterButton">
         <constraints>
-          <grid row="7" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="9" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value="Quitter"/>
@@ -34,19 +34,19 @@
       </component>
       <component id="7ff9a" class="javax.swing.JToolBar$Separator">
         <constraints>
-          <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="9" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties/>
       </component>
       <component id="63b44" class="javax.swing.JToolBar$Separator">
         <constraints>
-          <grid row="7" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="9" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties/>
       </component>
       <component id="2494f" class="javax.swing.JToolBar$Separator">
         <constraints>
-          <grid row="7" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="9" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties/>
       </component>
@@ -87,15 +87,9 @@
         </constraints>
         <properties/>
       </component>
-      <component id="86f9" class="javax.swing.JToolBar$Separator">
-        <constraints>
-          <grid row="6" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties/>
-      </component>
       <component id="2defc" class="javax.swing.JToolBar$Separator">
         <constraints>
-          <grid row="8" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="10" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties/>
       </component>
@@ -143,6 +137,40 @@
         <properties>
           <text value="Consulter patient"/>
         </properties>
+      </component>
+      <component id="86f9" class="javax.swing.JToolBar$Separator">
+        <constraints>
+          <grid row="7" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="9b803" class="javax.swing.JButton" binding="supprimerMedecinButton">
+        <constraints>
+          <grid row="7" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Supprimer médecin"/>
+        </properties>
+      </component>
+      <component id="eab36" class="javax.swing.JButton" binding="modifierMedecinButton">
+        <constraints>
+          <grid row="7" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Modifier médecin"/>
+        </properties>
+      </component>
+      <component id="fa760" class="javax.swing.JToolBar$Separator">
+        <constraints>
+          <grid row="6" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="160d7" class="javax.swing.JToolBar$Separator">
+        <constraints>
+          <grid row="8" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties/>
       </component>
     </children>
   </grid>

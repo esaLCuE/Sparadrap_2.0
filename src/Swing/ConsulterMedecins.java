@@ -10,6 +10,8 @@ import java.awt.event.ActionListener;
 import java.util.List;
 
 import static classes.FonctionsCommunes.*;
+import static classes.MedecinTraitant.medecinsTraitants;
+import static classes.Specialiste.specialistes;
 
 public class ConsulterMedecins extends JFrame {
 
@@ -18,11 +20,10 @@ public class ConsulterMedecins extends JFrame {
     private JButton precedentButton;
     private JButton quitterButton;
     private JButton visualiserButton;
-    private JButton ajouterButton;
-    private JButton supprimerButton;
+    private JButton ajouterMedecinButton;
 
 
-    public ConsulterMedecins(List<MedecinTraitant> medecins, List<Specialiste> specialistes) {
+    public ConsulterMedecins() {
 
         this.setTitle("Choix du médecin");
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -35,7 +36,7 @@ public class ConsulterMedecins extends JFrame {
 
         ajoutHistorique(this);
 
-        for (MedecinTraitant medecin : medecins) {
+        for (MedecinTraitant medecin : medecinsTraitants) {
             medecinsBox.addItem(medecin.getNom()+" - "+medecin.getAgrement());
         }
         for (Specialiste specialiste : specialistes) {
@@ -48,29 +49,43 @@ public class ConsulterMedecins extends JFrame {
                 String medecinChoisi = (String) medecinsBox.getSelectedItem();
                 String agrSpecTemp = medecinChoisi.replaceAll("^.*(- )","");
                 String pos="";
+                int medecinIndex=0;
                 int i;
-                for(i = 0; i < medecins.size(); i++){
-                    if(medecins.get(i).getAgrement().equals(agrSpecTemp)){
+                for(i = 0; i < medecinsTraitants.size(); i++){
+                    if(medecinsTraitants.get(i).getAgrement().equals(agrSpecTemp)){
                         pos = "med";
-                        int medecinIndex = i;
+                        medecinIndex = i;
                         break;
                     }
                 }
                 if (!pos.equals("med")){
-                    for(i = 0; i < specialistes.size(); i++){
-                        if(specialistes.get(i).getDomaine().equals(agrSpecTemp)){
-                            pos = "spec";
-                            int medecinIndex = i;
-                            break;
-                        }
-                    }
+                    medecinIndex = medecinsBox.getSelectedIndex()-medecinsTraitants.size();
                 }
                 setVisible(false);
-                PageMedecin pageMed = new PageMedecin(pos, i);
+                PageMedecin pageMed = new PageMedecin(pos, medecinIndex);
                 pageMed.setVisible(true);
 
+            }
+        });
 
+        ajouterMedecinButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setVisible(false);
+                Object[] options1 = {"Spécialiste", "Traitant","Annuler"};
+                JPanel panel = new JPanel();
+                panel.add(new JLabel("Quel type de médecin ajouter ?"));
 
+                int choix = JOptionPane.showOptionDialog(null, panel, "Choix médecin", JOptionPane.YES_NO_CANCEL_OPTION,
+                        JOptionPane.PLAIN_MESSAGE, null, options1, null);
+                if (choix == JOptionPane.YES_OPTION) {
+                    CreerMedecinSpecialiste creSpe = new CreerMedecinSpecialiste();
+                } else if (choix == JOptionPane.NO_OPTION) {
+                    CreerMedecinTraitant creTra = new CreerMedecinTraitant();
+                    creTra.setVisible(true);
+                } else {
+                    setVisible(true);
+                }
             }
         });
 

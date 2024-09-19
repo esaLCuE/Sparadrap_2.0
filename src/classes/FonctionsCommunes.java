@@ -9,7 +9,9 @@ import java.time.LocalDate;
 import java.util.List;
 
 import static Swing.Accueil.frames;
+import static classes.Achat.getAchats;
 import static classes.Client.clients;
+import static classes.Ordonnance.ordonnances;
 import static javax.swing.JOptionPane.YES_NO_OPTION;
 
 public class FonctionsCommunes {
@@ -24,6 +26,9 @@ public class FonctionsCommunes {
     public static void supprimer(JFrame framePageCli, String nom, int id, List liste, int nbSupHist, String suite, LocalDate date) {
         int input = afficherMessage("Supprimer " + nom + " ?", "Supprimer");
         if (input == JOptionPane.YES_OPTION) {
+            if (suite=="client") {
+                nettoyageOrdo(clients.get(id));
+            }
             liste.remove(id);
             framePageCli.setVisible(false);
             for (int i = 0; i < nbSupHist; i++) {
@@ -33,6 +38,14 @@ public class FonctionsCommunes {
                 ConsulterClient cli2 = new ConsulterClient();
             } else if (suite=="achat") {
                 HistoriqueAchats hisAch2 = new HistoriqueAchats(date);
+            }
+        }
+    }
+
+    public static void nettoyageOrdo(Client cli){
+        for (int i=0;i<getAchats().size();i++){
+            if (getAchats().get(i).getClientAchat()==cli){
+                getAchats().remove(i);
             }
         }
     }

@@ -64,7 +64,8 @@ public class Accueil extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
-                int input = JOptionPane.showConfirmDialog(null, "Y a-t-il une ordonnance pour cet achat ?", "Jsp", JOptionPane.YES_NO_CANCEL_OPTION);
+                int input = JOptionPane.showConfirmDialog(null, "Y a-t-il une ordonnance pour cet achat ?",
+                        "Ordonnance", JOptionPane.YES_NO_CANCEL_OPTION);
                 if (input == JOptionPane.YES_OPTION) {
                     AchatAvecOrdo achat = new AchatAvecOrdo();
                 } else if (input == JOptionPane.NO_OPTION) {
@@ -110,7 +111,7 @@ public class Accueil extends JFrame {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        ConsulterMedecins consMed = new ConsulterMedecins(medecinsTraitants, specialistes);
+        ConsulterMedecins consMed = new ConsulterMedecins();
         consMed.setVisible(true);
     }
     public List<JFrame> getFrame() {
@@ -118,6 +119,3 @@ public class Accueil extends JFrame {
     }
 
 }
-// TODO : METTRE LES CONTROLES (TRY) SUR LES SPECIALISTES ET SUR LE RESTE, PUIS LA PRIORITE 2
-// TODO : JE SAIS PAS JE CROIS QUE JE PEUX PASSER A LA PRIORITE 2 MAIS IL Y A SUREMENT ENCORE DES CHOSES A AMELIORER AAAAAAAAAAAAAAAAAAAAAAAAAH
-// TODO : LES ORDONNANCES DES MEDECINS NE S'AFFICHENT PAAAAAAAAAAAAAAAAAAAAAAAAAS

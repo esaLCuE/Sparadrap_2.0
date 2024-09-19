@@ -22,7 +22,9 @@ public class Specialiste extends InfosCommunes {
         return this.domaine;
     }
 
-    // POUR LES DOMAINES TOUT FAIRE DEPUIS LA COMBOBOX
+    public String getTotale() {
+        return(getNom()+getAdresse()+getCodePostal()+getVille()+getTelephone()+getEmail()+getDomaine());
+    }
 
     public static List<String> domaines = new ArrayList<>(Arrays.asList("Urologie", "Cardiologie", "Gynécologie",
             "Pédiatrie", "Neurologie"));

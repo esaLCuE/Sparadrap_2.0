@@ -82,6 +82,7 @@ public class ConsulterClient extends JFrame {
                             "Suppression", JOptionPane.YES_NO_OPTION);
                     if (input == JOptionPane.YES_OPTION) {
                         int id = clientsBox.getSelectedIndex();
+                        nettoyageOrdo(clients.get(id));
                         clients.remove(id);
                         majClients();
                     }

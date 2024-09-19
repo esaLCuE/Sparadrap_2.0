@@ -18,7 +18,7 @@ import static classes.Specialiste.specialistes;
 public class Main {
     public static void main(String[] args) {
 
-        MedecinTraitant NP = new MedecinTraitant("Ndf", "Prenom", "20 Rue de jsp", "54390",
+        MedecinTraitant NP = new MedecinTraitant("Nom", "Prénom", "20 Rue de jsp", "54390",
                 "Nancy", "0779429475", "unprenom@unnom.net", "06171812548");
         MedecinTraitant AiF = new MedecinTraitant("Fujimi", "Aika", "39 Rue des poissons", "87006",
                 "Saumure", "0648972464", "lespoissons@eau.com", "94156438281");
@@ -32,7 +32,7 @@ public class Main {
                 "0980980880","convhms@harmonie-mutuelles.fr", 5);
         Mutuelle MAAF = new Mutuelle("MAAF", "Rue de la Treille", "79180", "Chauray", "0969328328",
                 "facteur.maaf_sante@maaf.fr", 5);
-        Mutuelle JSP = new Mutuelle("JSP", "10 Rue de l'Avenue", "71370", "Ipender",
+        Mutuelle JSP = new Mutuelle("JSP Mutuelle", "10 Rue de l'Avenue", "71370", "Ipender",
                 "0713705420", "emailpro@mutuelle.fr", 5);
 
         mutuelles.add(HM);

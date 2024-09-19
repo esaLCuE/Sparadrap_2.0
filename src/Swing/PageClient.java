@@ -125,6 +125,7 @@ public class PageClient extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 supprimer(framePageCli, cli.getNom() ,id, clients,2, "client", null);
+                nettoyageOrdo(cli);
             }
         });
 
