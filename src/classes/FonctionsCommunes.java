@@ -13,6 +13,7 @@ import static classes.Achat.getAchats;
 import static classes.Client.clients;
 import static classes.Ordonnance.ordonnances;
 import static javax.swing.JOptionPane.YES_NO_OPTION;
+import static javax.swing.JOptionPane.showConfirmDialog;
 
 public class FonctionsCommunes {
     public static int afficherMessage(String message, String titre) {
@@ -51,7 +52,10 @@ public class FonctionsCommunes {
     }
 
     public static void quitterProgramme(){
-        System.exit(0);
+        int choix = showConfirmDialog(null,"Quitter l'application ?", "Quitter", YES_NO_OPTION);
+        if (choix == 0) {
+            System.exit(0);
+        }
     }
 
     public static void precedent(){
