@@ -44,7 +44,7 @@ public class CreerClient extends JFrame{
     private int annee=2024;
 
     DefaultListModel<String> modelSpec = new DefaultListModel<>();
-    private JList<String> listeSpecClient = new JList<>(modelSpec);
+    private JList listeSpecClient;
 
     private JButton retirerSpecialisteButton;
 
@@ -59,10 +59,11 @@ public class CreerClient extends JFrame{
         JFrame frameCreCli = new JFrame();
         setLocationRelativeTo(null);
         setResizable(false);
+        retirerSpecialisteButton.setEnabled(false);
 
         ajoutHistorique(this);
 
-        List <Integer> indexSpec = new ArrayList<>();
+        listeSpecClient.setModel(modelSpec);
         specialistesCli = new ArrayList<>();
 
         for (int i =0; i<specialistes.size();i++){
@@ -110,19 +111,27 @@ public class CreerClient extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 String specChoisie = specBox.getSelectedItem().toString();
+                if (specialistesCli.isEmpty()){
+                    retirerSpecialisteButton.setEnabled(true);
+                }
                 if (!modelSpec.contains(specChoisie)) {
-                    modelSpec.addElement(specBox.getSelectedItem().toString());
                     specialistesCli.add(specialistes.get(specBox.getSelectedIndex()));
-                    indexSpec.add(specBox.getSelectedIndex());
+                    modelSpec.addElement(specBox.getSelectedItem().toString());
+                    listeSpecClient.setSelectedIndex(specialistesCli.size()-1);
                 }
             }
         });
         retirerSpecialisteButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                modelSpec.removeElement(listeSpecClient.getSelectedIndex());
-                indexSpec.remove(specBox.getSelectedIndex());
-                specialistesCli.remove(specialistes.get(specBox.getSelectedIndex()));
+                if (listeSpecClient.getSelectedIndex()!=-1) {
+                    specialistesCli.remove(listeSpecClient.getSelectedIndex());
+                    modelSpec.removeElementAt(listeSpecClient.getSelectedIndex());
+                    if (specialistesCli.isEmpty()) {
+                        retirerSpecialisteButton.setEnabled(false);
+                    }
+                    listeSpecClient.setSelectedIndex(specialistesCli.size()-1);
+                }
             }
         });
 

@@ -94,7 +94,7 @@ public class ModifClient extends JFrame {
             medTraitBox.addItem(medecinsTraitant.getNom());
         }
 
-        mutuelleBox.setSelectedItem(cli.getMutuelle());
+        mutuelleBox.setSelectedItem(cli.getMutuelle().getNom());
         medTraitBox.setSelectedItem(cli.getMedecinTraitant());
 
         for (int i =0; i<specialistes.size();i++){

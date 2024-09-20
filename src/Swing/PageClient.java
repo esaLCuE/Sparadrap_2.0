@@ -59,7 +59,7 @@ public class PageClient extends JFrame{
 
         String texte = (cli.getNom() + " - " + cli.getSecuSociale() + "\n" + "Né le " + cli.getDateNaissance()
                 + "\n" + cli.getAdresse() + " " + cli.getCodePostal() + " " + cli.getVille() + "\n" + "Médecin traitant : " +
-                cli.getMedecinTraitant().getNom() + "\n" + cli.getMutuelle() + "\n" + "Contacts : " + cli.getEmail() + " - " + cli.getTelephone());
+                cli.getMedecinTraitant().getNom() + "\n" + cli.getMutuelle().getNom() + "\n" + "Contacts : " + cli.getEmail() + " - " + cli.getTelephone());
         infosClient.setText("<html>" + texte.replaceAll("\n", "<br/>") + "</html>");
 
         List<Integer> indSpec = new ArrayList<>();

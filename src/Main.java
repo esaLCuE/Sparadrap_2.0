@@ -18,12 +18,12 @@ import static classes.Specialiste.specialistes;
 public class Main {
     public static void main(String[] args) {
 
-        MedecinTraitant NP = new MedecinTraitant("Nom", "Prénom", "20 Rue de jsp", "54390",
+        MedecinTraitant NP = new MedecinTraitant("Traitant-Un", "Médecin-Un", "20 Rue du médecin", "54000",
                 "Nancy", "0779429475", "unprenom@unnom.net", "06171812548");
-        MedecinTraitant AiF = new MedecinTraitant("Fujimi", "Aika", "39 Rue des poissons", "87006",
-                "Saumure", "0648972464", "lespoissons@eau.com", "94156438281");
-        MedecinTraitant IZ = new MedecinTraitant("Zaward", "Ivo", "17 Rue du Liechtenstein", "01960",
-                "Péronnas", "0741217111", "couteau@taface.fr", "64214983056");
+        MedecinTraitant AiF = new MedecinTraitant("Traitant-Deux", "Médecin-Deux", "39 Rue du médecin", "87006",
+                "Limoges", "0648972464", "deuxprenom@deuxnom.com", "94156438281");
+        MedecinTraitant IZ = new MedecinTraitant("Traitant-Trois", "Médecin-Trois", "17 Rue du médecin", "01960",
+                "Péronnas", "0741217111", "troisprenom@troisnom.fr", "64214983056");
         medecinsTraitants.add(NP);
         medecinsTraitants.add(AiF);
         medecinsTraitants.add(IZ);
@@ -39,12 +39,12 @@ public class Main {
         mutuelles.add(MAAF);
         mutuelles.add(JSP);
 
-        Specialiste HH = new Specialiste("Hebimori","Hikari","Forêt aux serpents","55555",
-                "Le Serpent", "0555555555","lesserpents@laforet.fr","Cardiologie");
-        Specialiste BL = new Specialiste("Lanteille","Baptiste","7 Rue du Clerc","67386",
-                "Rauwillier","0771523689","lindifference@leregard.fr","Neurologie");
-        Specialiste TP = new Specialiste("Primo", "Théo", "1 rue du Primeur","01001",
-                "Ainville","0100000001","lepremier@tout.fr","Pédiatrie");
+        Specialiste HH = new Specialiste("Spécialiste-Un","Méd-Un","2 Rue du médecin","55555",
+                "Ville", "0555555555","nomun@specun.fr","Cardiologie");
+        Specialiste BL = new Specialiste("Spécialiste-Deux","Méd-Deux","7 Rue du Médecin","67386",
+                "Rauwillier","0771523689","nomdeux@specdeux.fr","Neurologie");
+        Specialiste TP = new Specialiste("Spécialiste-Trois", "Méd-Trois", "1 rue du Médecin","01001",
+                "Bourg-en-Bresse","0100000001","nomtrois@spectrois.fr","Pédiatrie");
         specialistes.add(HH);
         specialistes.add(BL);
         specialistes.add(TP);
@@ -61,16 +61,16 @@ public class Main {
         specialistesAZ.add(HH);
         specialistesAZ.add(TP);
 
-        Client AP = new Client("Paga", "Al", "20 rue du Pérou", "60430",
-                "Lima", "0708090405", "leslamas@lamontagne.pe", "160052A55577799",
+        Client AP = new Client("Client-Un", "Nom-du-un", "20 rue du Client", "60430",
+                "Noailles", "0708090405", "lenomun@duclientun.fr", "160052A55577799",
                 LocalDate.of(2000,10,15), HM, NP, specialistesAP);
 
-        Client AkF = new Client("Fujimi", "Akihide", "1 pas de rue", "10000",
-                "Tourcoing", "0615325698", "tonargent@mespoches.com", "160052A44466688",
+        Client AkF = new Client("Client-Deux", "Nom-du-deux", "57 rue du Client", "10000",
+                "Troyes", "0615325698", "lenomdeux@duclientdeux.com", "160052A44466688",
                 LocalDate.of(1995,1,1), JSP, IZ, specialistesAkF);
 
-        Client AZ = new Client("Zaward", "Alice", "17 Rue du Liechtenstein", "01960",
-                "Péronnas", "0782461937", "lesarbres@laforet.com", "201052A44466688",
+        Client AZ = new Client("Client-Trois", "Nom-du-trois", "17 Rue du Client", "01960",
+                "Péronnas", "0782461937", "lenomtrois@duclientrois.com", "201052A44466688",
                 LocalDate.of(2000,9,6), MAAF, AiF, specialistesAZ);
         clients.add(AP);
         clients.add(AkF);

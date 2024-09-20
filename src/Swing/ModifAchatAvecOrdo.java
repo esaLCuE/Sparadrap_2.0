@@ -55,6 +55,8 @@ public class ModifAchatAvecOrdo extends JFrame {
         setLocationRelativeTo(null);
         setResizable(false);
 
+        ajoutHistorique(this);
+
         for(int i=1;i<=31;i++){
             jourBox.addItem(i);
         }

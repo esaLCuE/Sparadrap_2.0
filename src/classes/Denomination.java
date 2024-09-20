@@ -36,12 +36,17 @@ public class Denomination {
     }
 
     public void setNom(String ndf, String prenom) throws NullPointerException, IllegalArgumentException, InputMismatchException {
+        setNdf(ndf);
+        setPrenom(prenom);
         this.nom = prenom+" "+ndf;
     }
     public String getNom() {
         return this.nom;
     }
-    public void setNomSoc(String nom){
+    public void setNomSoc(String nom) throws NullPointerException{
+        if (nom == null || nom.isEmpty() || nom.matches("\\s+")){
+            throw new NullPointerException("Merci de saisir un nom");
+        }
         this.nom=nom;
     }
     public String getNomSoc(){

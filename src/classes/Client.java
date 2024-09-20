@@ -49,16 +49,14 @@ public class Client extends InfosCommunes {
         return this.dateNaissanceForm;
     }
 
-    // SAISIE DANS UNE COMBOBOX
     public void setMutuelle(Mutuelle mutuelle) throws NullPointerException {
         if (mutuelle == null ){
             throw new NullPointerException("Merci de saisir une mutuelle");
         }
         this.mutuelle = mutuelle;
     }
-
-    public String getMutuelle() {
-        return this.mutuelle.getNom();
+    public Mutuelle getMutuelle() {
+        return this.mutuelle;
     }
 
     public void setMedecinTraitant(MedecinTraitant medecinTraitant) throws NullPointerException {
