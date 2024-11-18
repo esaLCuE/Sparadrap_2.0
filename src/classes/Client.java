@@ -85,13 +85,12 @@ public class Client extends InfosCommunes {
 
     public Client(String ndf, String prenom, String adresse, String codePostal, String ville, String telephone,
                   String email, String secuSociale, LocalDate dateNaissance, Mutuelle mutuelle,
-                  MedecinTraitant medecinTraitant, List<Specialiste> specialistesClient)
+                  MedecinTraitant medecinTraitant)
                     throws IllegalArgumentException, InputMismatchException, NullPointerException {
         super(ndf, prenom, adresse, codePostal, ville, telephone, email);
         setSecuSociale(secuSociale);
         setDateNaissance(dateNaissance);
         setMutuelle(mutuelle);
         setMedecinTraitant(medecinTraitant);
-        setSpecialistesClient(specialistesClient);
     }
 }

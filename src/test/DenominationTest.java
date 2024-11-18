@@ -28,7 +28,7 @@ class DenominationTest {
 
     static Client clientTest = new Client("ndfTest", "preTest", "1 adresse test", "00001","villeTest",
             "0600000001", "email@test.com","101012A11122233", LocalDate.of(2000,01,01),
-            MuT, MeT1, specTest);
+            MuT, MeT1/*, specTest*/);
 
     @BeforeAll
     static void setUp() {

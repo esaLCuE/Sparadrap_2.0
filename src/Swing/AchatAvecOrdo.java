@@ -178,11 +178,11 @@ public class AchatAvecOrdo extends JFrame {
 
     private void enregistrerAchat(){
         Achat ach = new Achat(clientsPossibles.get(clientOrdoBox.getSelectedIndex()),
-                    specOrdo, tsMedics, ttesQtt,
                     LocalDate.of(Integer.parseInt(anneeBox.getSelectedItem().toString()),
                             Integer.parseInt(moisBox.getSelectedItem().toString()),
-                            Integer.parseInt(jourBox.getSelectedItem().toString())), ordo);
+                            Integer.parseInt(jourBox.getSelectedItem().toString())));
 
-        ajoutAchat(ach);
+        // TODO : insert into Achat ach
+        // TODO : boucle for pour insert into Comporte
     }
 }

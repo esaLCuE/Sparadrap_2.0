@@ -48,12 +48,17 @@ public class PageAchat extends JFrame {
         } else {
             texte = (achId.getDateAchatForm() + "\n" + achId.getClientAchat().getNom()+ "\n");
         }
+
+        /*
         for(int i=0;i<achId.getListeMedicaments().size();i++){
             prix = achId.getListeMedicaments().get(i).getPrix()*achId.getListeQuantites().get(i);
             texte=texte+achId.getListeMedicaments().get(i).getNom()+ " x" +achId.getListeQuantites().get(i) +
                     " : " + prix +"€" + "\n";
             total+=prix;
         }
+        */
+        // TODO : remplacer le getListe par récup de la table Contient
+
         texte+="Total : "+total+"€";
         detailAchatLabel.setText("<html>" + texte.replaceAll("\n", "<br/>") + "</html>");
 

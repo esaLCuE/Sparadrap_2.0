@@ -61,12 +61,12 @@ public class Medicament extends Denomination {
 
     public static List<Medicament> medicaments = new ArrayList<Medicament>();
 
-    public Medicament(String nom, String categorie, int prix, LocalDate miseEnService)
+    public Medicament(String nom, int prix, LocalDate miseEnService, String categorie)
             throws NullPointerException, IllegalArgumentException, InputMismatchException {
         super(nom);
         setCategorie(categorie);
         setPrix(prix);
         setMiseEnService(miseEnService);
-    }
+    } // TODO : changer les string en id
 
 }

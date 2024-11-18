@@ -13,8 +13,6 @@ public class Ordonnance {
     private LocalDate emission;
     private String nomMedecinOrdo;
     private Client nomClientOrdo;
-    private List<Medicament> listMeds;
-    private List<Integer> listQtt;
     private String nomSpec;
 
     public void setEmission(LocalDate emission) throws FormatFlagsConversionMismatchException, DateTimeException {
@@ -41,18 +39,6 @@ public class Ordonnance {
         return this.nomClientOrdo;
     }
 
-    //SELECTION AVEC COMBOBOX, AJOUT DYNAMIQUE DE LIGNES
-    public void setMedicaments(List<Medicament> medicaments, List<Integer> quantites) throws InputMismatchException, IllegalArgumentException, NullPointerException {
-        this.listMeds = medicaments;
-        this.listQtt = quantites;
-    }
-    public List<Medicament> getMedicaments() {
-        return this.listMeds;
-    }
-    public List<Integer> getQuantites() {
-        return this.listQtt;
-    }
-
     //SELECTION AVEC COMBOBOX
     public void setNomSpec(Specialiste spec) throws InputMismatchException, IllegalArgumentException, NullPointerException {
         this.nomSpec = spec.getNom();
@@ -64,20 +50,12 @@ public class Ordonnance {
     public static List<Ordonnance> ordonnances = new ArrayList<>();
 
     //PENSER A PARLER DU TAUX DE REMBOURSEMENT DANS LES INFORMATIONS PERTINENTES
-    public Ordonnance(LocalDate emission, MedecinTraitant medecin, Specialiste spec, Client client, List<Medicament> listMeds, List<Integer> listQtt)
+    public Ordonnance(LocalDate emission,/* int id_achat, */ Specialiste spec, Client client)
             throws InputMismatchException, IllegalArgumentException, NullPointerException, DateTimeException {
         setEmission(emission);
-        setNomMedecin(medecin);
         setClientOrdo(client);
-        setMedicaments(listMeds, listQtt);
         setNomSpec(spec);
 
-    }
-    public Ordonnance(LocalDate emission, Client client, List<Medicament> listMeds, List<Integer> listQtt)
-            throws InputMismatchException, IllegalArgumentException, NullPointerException, DateTimeException {
-        setEmission(emission);
-        setClientOrdo(client);
-        setMedicaments(listMeds, listQtt);
-
+        // TODO : ajouter id achat, changer client en id_client
     }
 }

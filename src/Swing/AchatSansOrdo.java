@@ -147,11 +147,14 @@ public class AchatSansOrdo extends JFrame {
 
     private void enregistrerAchat(){
         try {
-            Achat ach = new Achat(clients.get(clientOrdoBox.getSelectedIndex()), tsMedics, ttesQtt,
+            Achat ach = new Achat(clients.get(clientOrdoBox.getSelectedIndex()),
                     LocalDate.of(Integer.parseInt(anneeBox.getSelectedItem().toString()),
                                 Integer.parseInt(moisBox.getSelectedItem().toString()),
-                                Integer.parseInt(jourBox.getSelectedItem().toString())), ordo);
-            ajoutAchat(ach);
+                                Integer.parseInt(jourBox.getSelectedItem().toString())));
+
+            // TODO : insert into Achat ach
+            // TODO : boucle for pour insert into Comporte
+
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

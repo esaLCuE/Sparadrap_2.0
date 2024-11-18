@@ -37,10 +37,10 @@ class ClientTest {
 
     static Client clientTest1 = new Client("ndfTest", "preTest", "1 adresse test", "00001","villeTest",
             "0600000001", "email@test.com","101012A11122233", LocalDate.of(2000,1,1),
-            MuT, MeT1, specTest);
+            MuT, MeT1/*, specTest*/);
 
-    static Medicament medTest1 = new Medicament("MédiTest","Antibiotique", 10, LocalDate.of(1990,1,1));
-    static Medicament medTest2 = new Medicament("MédeuxTest","Antibiotique", 10, LocalDate.of(1990,1, 1));
+    static Medicament medTest1 = new Medicament("MédiTest", 10, LocalDate.of(1990,1,1),"Antibiotique");
+    static Medicament medTest2 = new Medicament("MédeuxTest", 10, LocalDate.of(1990,1, 1),"Antibiotique");
 
     @BeforeAll
     static void setUp() {

@@ -84,7 +84,8 @@ public class CreerMedecinSpecialiste extends JFrame {
                 }
             }
 
-            specialistes.add(medSpe);
+            // TODO : insert into Specialiste MedSpe
+
             setVisible(false);
             suppHistorique();
             suppHistorique();

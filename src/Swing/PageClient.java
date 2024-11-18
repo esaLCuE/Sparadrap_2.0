@@ -62,6 +62,7 @@ public class PageClient extends JFrame{
                 cli.getMedecinTraitant().getNom() + "\n" + cli.getMutuelle().getNom() + "\n" + "Contacts : " + cli.getEmail() + " - " + cli.getTelephone());
         infosClient.setText("<html>" + texte.replaceAll("\n", "<br/>") + "</html>");
 
+        /*
         List<Integer> indSpec = new ArrayList<>();
         indSpec.add(-1);
         modelSpecClient.addElement(cli.getMedecinTraitant().getNom()+" - "+cli.getMedecinTraitant().getAgrement());
@@ -70,8 +71,11 @@ public class PageClient extends JFrame{
             indSpec.add(specialistes.indexOf(cli.getSpecialistesClient().get(i)));
             modelSpecClient.addElement(str);
         }
+        TODO : Remplacer par appel aux tables MedecinTraitant et Specialiste
+         */
         specList.setSelectedIndex(0);
 
+        /*
         List<Integer> indAch = new ArrayList<>();
         for (int i=0;i< Achat.getAchats().size();i++) {
             if(Achat.getAchats().get(i).getClientAchat().getNom().equals(cli.getNom())){
@@ -83,12 +87,15 @@ public class PageClient extends JFrame{
                 indAch.add(i);
             }
         }
+        TODO : remplacer par appel à la table Achat
+         */
         if(modelOrd.size()==0){
             consulterAchatButton.setEnabled(false);
         } else {
             achatsList.setSelectedIndex(0);
         }
 
+        /*
         consulterAchatButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -110,6 +117,8 @@ public class PageClient extends JFrame{
                 }
             }
         });
+        TODO : pas oublier ça
+         */
 
         modifierClientButton.addActionListener(new ActionListener() {
             @Override

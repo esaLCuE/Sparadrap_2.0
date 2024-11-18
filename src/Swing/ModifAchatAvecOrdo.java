@@ -104,6 +104,7 @@ public class ModifAchatAvecOrdo extends JFrame {
             }
         });
 
+        /*
         for (int i=0;i<achId.getListeMedicaments().size();i++){
             String medNom = achId.getListeMedicaments().get(i).getNom()+" - "+achId.getListeMedicaments().get(i).getCategorie();
             int medQtt = achId.getListeQuantites().get(i);
@@ -113,6 +114,8 @@ public class ModifAchatAvecOrdo extends JFrame {
         }
         validerButton.setEnabled(true);
         retirerMedicamentButton.setEnabled(true);
+        */
+        // TODO : remplacer getListe par une récup de la table Contient
 
         ajouterMedicamentButton.addActionListener(new ActionListener() {
             @Override
@@ -123,9 +126,12 @@ public class ModifAchatAvecOrdo extends JFrame {
                 }
                 String medNom = medicamentsBox.getSelectedItem().toString();
                 int medQtt = Integer.parseInt(quantiteBox.getSelectedItem().toString());
+                /*
                 modelMedicamentsList.addElement(medNom+" x"+medQtt);
                 tsMedics.add(medicaments.get(medicamentsBox.getSelectedIndex()));
                 ttesQtt.add(Integer.parseInt(quantiteBox.getSelectedItem().toString()));
+                 */
+                // TODO : placer ça dans "valider", remplacer ça par une suppression dans Comporte des médicaments précédents et ajout des actuels
             }
         });
         retirerMedicamentButton.addActionListener(new ActionListener() {
@@ -191,10 +197,8 @@ public class ModifAchatAvecOrdo extends JFrame {
         try {
             achId.setClientAchat(clients.get(clientOrdoBox.getSelectedIndex()));
             achId.setDateAchat(LocalDate.of((Integer) anneeBox.getSelectedItem(), (Integer) moisBox.getSelectedItem(), (Integer) jourBox.getSelectedItem()));
-            achId.setSpecialisteAchat(specOrdo);
-            achId.setMedecinTraitant(clients.get(clientOrdoBox.getSelectedIndex()).getMedecinTraitant());
-            achId.setListeMedicaments(tsMedics);
-            achId.setListeQuantites(ttesQtt);
+
+            // TODO : Update achat set [...] where [...]
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

@@ -91,6 +91,7 @@ public class ModifMedecinTraitant extends JFrame {
     }
 
     private void modifierMedecinTraitant(MedecinTraitant med) {
+        /*
             med.setNdf(ndfField.getText());
             med.setPrenom(prenomField.getText());
             med.setNom(ndfField.getText(), prenomField.getText());
@@ -100,5 +101,7 @@ public class ModifMedecinTraitant extends JFrame {
             med.setVille(villeField.getText());
             med.setTelephone(telephoneField.getText());
             med.setAgrement(agrementField.getText());
+            TODO : update table MedecinTraitant set [...] where [...]
+         */
     }
 }

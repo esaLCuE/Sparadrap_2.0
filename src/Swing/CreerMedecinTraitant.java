@@ -75,7 +75,7 @@ public class CreerMedecinTraitant extends JFrame {
                 }
             }
 
-            medecinsTraitants.add(medTra);
+            // TODO : insert into MedecinTraitant medTra
             setVisible(false);
             suppHistorique();
 

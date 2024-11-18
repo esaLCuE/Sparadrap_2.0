@@ -85,18 +85,24 @@ public class ModifClient extends JFrame {
         moisBox.setSelectedItem(cli.getDateNaissanceOri().getMonthValue());
         anneeBox.setSelectedItem(cli.getDateNaissanceOri().getYear());
 
-
+        /*
         for (classes.Mutuelle mutuelle : mutuelles) {
             mutuelleBox.addItem(mutuelle.getNom());
         }
+        // TODO : remplacer par un appel de la table Mutuelle
+         */
 
+        /*
         for (classes.MedecinTraitant medecinsTraitant : medecinsTraitants) {
             medTraitBox.addItem(medecinsTraitant.getNom());
         }
+        // TODO : remplacer par un appel de la table MedecinTraitant
+         */
 
         mutuelleBox.setSelectedItem(cli.getMutuelle().getNom());
         medTraitBox.setSelectedItem(cli.getMedecinTraitant());
 
+        /*
         for (int i =0; i<specialistes.size();i++){
             specBox.addItem(specialistes.get(i).getNom()+" - "+specialistes.get(i).getDomaine());
         }
@@ -104,6 +110,8 @@ public class ModifClient extends JFrame {
             modelSpecModif.addElement(cli.getSpecialistesClient().get(i).getNom()+" - "+cli.getSpecialistesClient().get(i).getDomaine());
             specialistesCliModif.add(i,cli.getSpecialistesClient().get(i));
         }
+        // TODO : remplacer par appel de la table Specialiste
+         */
 
         ajouterSpecialisteButton.addActionListener(new ActionListener() {
             @Override
@@ -111,7 +119,10 @@ public class ModifClient extends JFrame {
                 String specChoisie = specBox.getSelectedItem().toString();
                 if (!modelSpecModif.contains(specChoisie)) {
                     modelSpecModif.addElement(specBox.getSelectedItem().toString());
+                    /*
                     specialistesCliModif.add(specialistes.get(specBox.getSelectedIndex()));
+                    TODO :  mettre à la fin et remplacer par un ajout dans la table Suit selon ensemble modifs
+                     */
                 }
             }
         });
@@ -120,7 +131,10 @@ public class ModifClient extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 if (listeSpecClient.getSelectedIndex()!=-1) {
                     specialistesCliModif.remove(listeSpecClient.getSelectedIndex());
+                    /*
                     modelSpecModif.removeElementAt(listeSpecClient.getSelectedIndex());
+                    TODO : mettre à la fin et remplacer par suppression dans la table Suit selon ensemble modifs
+                     */
                 }
             }
         });
@@ -168,6 +182,7 @@ public class ModifClient extends JFrame {
 
     }
     public void enregistrerModifsClient(Client cli){
+        /*
         cli.setNdf(ndfField.getText());
         cli.setPrenom(prenomField.getText());
         cli.setNom(ndfField.getText(), prenomField.getText());
@@ -181,6 +196,7 @@ public class ModifClient extends JFrame {
                 Integer.parseInt(moisBox.getSelectedItem().toString()), Integer.parseInt(jourBox.getSelectedItem().toString())));
         cli.setMutuelle(mutuelles.get(mutuelleBox.getSelectedIndex()));
         cli.setMedecinTraitant(medecinsTraitants.get(medTraitBox.getSelectedIndex()));
-        cli.setSpecialistesClient(specialistesCliModif);
+        TODO : update Client set [...] where [...] ; modifier table Suit
+         */
     }
 }

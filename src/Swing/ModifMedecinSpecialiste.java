@@ -40,9 +40,12 @@ public class ModifMedecinSpecialiste extends JFrame {
 
         setVisible(true);
 
+        /*
         for (int i=0;i<domaines.size();i++){
             domaineBox.addItem(domaines.get(i).toString());
         }
+        TODO : remplacer par appel Table Specialiste
+         */
         domaineBox.setSelectedItem(spe.getDomaine());
 
         prenomField.setText(spe.getPrenom());
@@ -97,6 +100,7 @@ public class ModifMedecinSpecialiste extends JFrame {
     }
 
     private void modifierMedecinSpecialiste(Specialiste spe) {
+        /*
             spe.setNdf(ndfField.getText());
             spe.setPrenom(prenomField.getText());
             spe.setNom(ndfField.getText(), prenomField.getText());
@@ -106,6 +110,8 @@ public class ModifMedecinSpecialiste extends JFrame {
             spe.setTelephone(telephoneField.getText());
             spe.setEmail(emailField.getText());
             spe.setDomaine(domaineBox.getSelectedItem().toString());
+            TODO : update table Specialiste set [...] where [...]
+         */
     }
 
 }

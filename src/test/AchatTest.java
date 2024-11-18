@@ -46,17 +46,16 @@ class AchatTest {
 
     static Client clientTest1 = new Client("ndfTest", "preTest", "1 adresse test", "00001","villeTest",
             "0600000001", "email@test.com","101012A11122233", LocalDate.of(2000,01,01),
-            MuT, MeT1, specTest);
+            MuT, MeT1/*, specTest*/);
 
     static Client clientTest2 = new Client("Deuxième", "Client", "2 adresse test","00002","Deuxième ville test",
             "0600000002", "deuxieme@email.test", "201012A11122233", LocalDate.of(2002, 02,02),
-            MuT2, MeT2, specTest2);
+            MuT2, MeT2/*, specTest2*/);
 
-    static Medicament medTest1 = new Medicament("MédiTest","Antibiotique", 10, LocalDate.of(1990,01,01));
-    static Medicament medTest2 = new Medicament("MédeuxTest","Antibiotique", 10, LocalDate.of(1990,01,01));
+    static Medicament medTest1 = new Medicament("MédiTest", 10, LocalDate.of(1990,01,01),"Antibiotique");
+    static Medicament medTest2 = new Medicament("MédeuxTest", 10, LocalDate.of(1990,01,01),"Antibiotique");
 
-    static Achat achTest = new Achat(clientTest1, ST, medicamentsTest, quantitesTest, LocalDate.of(2010,01,01),
-            true);
+    static Achat achTest = new Achat(clientTest1, LocalDate.of(2010,01,01));
 
     @BeforeAll
     static void setUp() {
@@ -94,7 +93,7 @@ class AchatTest {
         achTest.setSpecialisteAchat(ST2);
         assertEquals(ST2, achTest.getSpecialisteAchat(), "Specialiste");
     }
-
+/*
     @Test
     void testSetListeMedicaments() {
         achTest.setListeMedicaments(medicamentsTest2);
@@ -117,11 +116,10 @@ class AchatTest {
             assertTrue(dateTest.isAfter(achTest.getListeMedicaments().get(i).getMiseEnService()));
         }
     }
-
+*/
     @Test
     void testAjoutAchat() {
-        Achat achTest2 = new Achat(clientTest2, ST, medicamentsTest, quantitesTest, LocalDate.of(2010,01,01),
-                true);
+        Achat achTest2 = new Achat(clientTest2, LocalDate.of(2010,01,01));
         achatsTest.add(achTest2);
         assertTrue(achatsTest.contains(achTest2), "Ajout d'achat");
     }
@@ -131,10 +129,11 @@ class AchatTest {
         achatsTest.remove(achTest);
         assertFalse(achatsTest.contains(achTest), "Retrait d'achat");
     }
-
+/*
     @Test
     void testSetOrdo() {
         achTest.setOrdo(false);
         assertTrue(!achTest.getOrdo(), "Booléen ordonnance");
     }
+*/
 }

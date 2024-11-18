@@ -36,4 +36,5 @@ public class Specialiste extends InfosCommunes {
         super(nom, prenom, adresse, codePostal, ville, telephone, email);
         setDomaine(domaine);
     }
+    // TODO : Le domaine ne doit plus être un string, mais est un id dans la BDD. Changer le get selected item to string en get selected index dans les classes concernées
 }

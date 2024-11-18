@@ -12,8 +12,6 @@ public class Achat {
     private Client client;
     private MedecinTraitant medecinTraitant;
     private Specialiste specialiste;
-    private List<Medicament> listeMedicaments;
-    private List<Integer> listeQuantites;
     private LocalDate dateAchat;
     private String dateAchatForm;
     private boolean ordo;
@@ -43,29 +41,18 @@ public class Achat {
         return this.specialiste;
     }
 
-    public void setListeMedicaments(List<Medicament> listeMedicaments) {
-        this.listeMedicaments = listeMedicaments;
-    }
-    public List<Medicament> getListeMedicaments() {
-        return this.listeMedicaments;
-    }
-
-    public void setListeQuantites(List<Integer> listeQuantites) {
-        this.listeQuantites = listeQuantites;
-    }
-    public List<Integer> getListeQuantites() {
-        return this.listeQuantites;
-    }
-
     public void setDateAchat(LocalDate dateAchat) throws DateTimeException {
         if(dateAchat.isBefore(client.getDateNaissanceOri())){
             throw new DateTimeException("L'achat ne peut pas être antérieur à la naisance du client.");
         }
+        /*
         for (int i=0; i<listeMedicaments.size(); i++){
             if(dateAchat.isBefore(listeMedicaments.get(i).getMiseEnService())){
                 throw new DateTimeException("L'achat ne peut pas être antérieur à la mise en service du médicament.");
             }
         }
+         */
+        // TODO : remplacer listeMeds par récup de la table Contient
         this.dateAchat = dateAchat;
         DateTimeFormatter formatPattern = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         this.dateAchatForm = dateAchat.format(formatPattern);
@@ -88,30 +75,12 @@ public class Achat {
         return achats;
     }
 
-    public void setOrdo(boolean ordo){
-        this.ordo = ordo;
-    }
-
     public boolean getOrdo(){
         return this.ordo;
     }
 
-    public Achat(Client client, List<Medicament> medicaments, List<Integer> quantites, LocalDate dateAchat, boolean ordo) {
+    public Achat(Client client, LocalDate dateAchat) {
         setClientAchat(client);
-        setListeMedicaments(medicaments);
-        setListeQuantites(quantites);
         setDateAchat(dateAchat);
-        setOrdo(ordo);
-    }
-
-    public Achat(Client client, Specialiste specialiste, List<Medicament> medicaments, List<Integer> quantites,
-                 LocalDate dateAchat, boolean ordo) {
-        setClientAchat(client);
-        setMedecinTraitant(client.getMedecinTraitant());
-        setSpecialisteAchat(specialiste);
-        setListeMedicaments(medicaments);
-        setListeQuantites(quantites);
-        setDateAchat(dateAchat);
-        setOrdo(ordo);
     }
 }

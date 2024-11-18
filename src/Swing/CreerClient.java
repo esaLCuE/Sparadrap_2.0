@@ -170,9 +170,9 @@ public class CreerClient extends JFrame{
             Client cli = new Client(ndfField.getText(), prenomField.getText(), adresseField.getText(), cpField.getText(),
                     villeField.getText(), telephoneField.getText(), emailField.getText(), secuSocField.getText(),
                     LocalDate.of(annee, mois, jour), mutuelles.get(mutuelleBox.getSelectedIndex()),
-                    medecinsTraitants.get(medTraitBox.getSelectedIndex()), specialistesCli);
+                    medecinsTraitants.get(medTraitBox.getSelectedIndex()));
 
-            clients.add(cli);
+            // TODO : insert into Client cli
 
             setVisible(false);
             suppHistorique();
